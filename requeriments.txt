@@ -1,0 +1,45 @@
+npm init - fala tudo sobre o projeto
+/* e um servidor node */
+npm install express --save
+
+/* renderiza html */
+npm install ejs --save
+no ejs voce precisa criar uma pasta view
+
+/* habilita dados via javascript */
+npm install body-parser --save
+
+/* comunicação com o banco de dados */
+npm install --save sequelize
+npm install --save mysql2 - banco mysql
+npm install --save tedious - banco sql server 
+
+/* slug */
+npm install --save slugify
+
+/* criptografar senha*/
+npm install --save bcryptjs
+
+/*  cooking */
+npm install express-session --save
+
+/* Docker */
+docker pull mysql:8.0.34
+docker run --name coletordb -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=root" -d mysql:8.0.34
+
+docker pull mcr.microsoft.com/mssql/server
+docker run -e  "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Docker123!" -p 1440:1433 -d mcr.microsoft.com/mssql/server:2022-latest 
+
+//router.post("/api/Machines/Receive", (req, res) => {
+//  const dateBody = req.body;
+//console.log(dateBody.Record);
+//res.send(dateBody);
+//});
+
+
+// tirar todas as roda de ativar produção 
+
+/* DOCKER */
+docker build -t aptivdashboard/node:latest .
+docker run -d -p 3400:3400 --name aptivdashboard aptivdashboard/node
+

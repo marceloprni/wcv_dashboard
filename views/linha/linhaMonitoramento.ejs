@@ -1,0 +1,217 @@
+<%- include ('../partials/header.ejs'); -%>
+    <%- include ('../partials/navbar.ejs'); -%>
+
+        <div class="container-fluid  cnFluidlina">
+            <div class="row rowGeral">
+                
+                <div class="colButtonsIconsline">
+                    <p class="mesParagrafo linhaMesCollor" id="mesString"></p>
+                    <section class="buttonDayslinha" id="daysContainerLinha"></section>
+                </div>
+
+                <div class="col-10 col-sm-10  searchModelCamp">
+                    <!-- PESQUISA DE VALOR  -->
+                    <div class="row searchCamp">
+                        <div class="col-12 searchCampComponentLine">
+                            <div id="spinner" class="spinner-container">
+                                <div class="spinner-border text-dark" role="status">
+                                    <span class="sr-only">Loading...</span>
+                                </div>
+                            </div>
+                            <label class="paragarafo_1_linha">LINHA</label>
+                            <select class="form-control selectCombo" id="selectComboId"></select>
+                            <label  class="paragarafo_1_linha">TURNO</label>
+                            <select class="form-control selectCombo comboTurno" id="selecTurnoId">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                            <label class="paragarafo_1_linha">STATUS:</label>
+                            <p class="statusLinha" id="statusLinhas"></p>
+                            <div>
+                                <input type="checkbox" id="checkAuto">
+                                <label class="pargrafo_1_linha_check" for="checkAuto">CICLO AUTOMÁTICO</label>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <section class="dataRowPrincipalLinha">
+                        <!-- PRIMEIRA LINHA  -->
+                        <div class="row rowFirstLine">
+
+                            <div class="col-1 col-sm-1 columnFirstLineBtn">
+                                <a type="button" class="IdentifyComponentLine textValue" id="idcolmunFirstSkill">S</a>
+                            </div>
+                            
+                            <div class="col-3 col-sm-2 columnFirstLine" id="idcolumnFirstLineAB">
+                                <p class="textInformation" id="paragrafoAb">ABSENTEÍSMO</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnFirstAbsenteismo">
+                                    <p class="textValue" id="absenteismoValor"></p>
+                                </a>
+                                <p class="textInformation" id="paragrafoTargetAb"></p>
+                            </div>
+
+                            <div class="col-3 col-sm-2 columnFirstLine" id="idcolumnFirstLineDSA">
+                                <p class="textInformation" id="paragrafoDSA">DIAS S/ACIDENTES</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnFirstId">
+                                    <p class="textValue" id="calculoDiasSemAcidente"></p>
+                                </a>
+                                <p class="textInformation" id="paragrafoTargetDSA"></p>
+                            </div>
+
+                        </div>
+                        <!-- SEGUNDA LINHA  -->
+                        <div class="row rowSecondLine">
+
+                            <div class="col-1 col-sm-1 columnSecondLineBtn">
+                                <a type="button" class="IdentifyComponentLine textValue" id="idcolumnSecondQuality">Q</a>
+                            </div>
+
+                            <div class="col-3 col-sm-2 columnSecondLine" id="idcolumnSecondLineFTQ">
+                                <p class="textInformation" id="paragrafoFTQ">FTQ</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnSecondId1">
+                                    <p class="textValue" id="calculoFTQ"></p>
+                                </a>
+                                <p class="textInformation" id="paragrafoTargetFTQ">TARGET</p>
+                            </div>
+
+                            <div class="col-3 col-sm-2 columnSecondLine" id="idcolumnSecondLineSCRAP">
+                                <p class="textInformation" id="paragrafoSCRAP">SCRAP</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnSecondId2">
+                                    <p class="textValue" id="calculoScrap"></p>
+                                </a>
+                                <p class="textInformation" id="paragrafoTargetSCRAP">TARGET</p>
+                            </div>
+
+                            <!-- SCRAP PPM FOI APAGADO NÃO VAI MAIS UTILIZAR -->
+                            <div class="col-3 col-sm-2 columnSecondLine" id="idcolumnSecondLineSCRAPpPM">
+                                <p class="textInformation" id="pargrafoSCRAPpPM">SCRAP %</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnSecondId3">                                  
+                                    <p class="textValue" id="calculoScrapPorcentagem"></p>
+                                </a>
+                                <p class="textInformation" id="paragrafoTargetSCRAPporcentagem"></p>
+                            </div>
+
+                            <div class="col-3 col-sm-2 columnSecondLine" id="idcolumnSecondLineReclamacoes">
+                                <p class="textInformation" id="paragrafoReclamacoes">RECLAMAÇÕES</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnSecondId4">
+                                    <p class="textValue" id="calculoReclamacoes"></p>
+                                </a>
+                                <p class="textInformation" id="paragrafoTargetReclamacoes">TARGET</p>
+                            </div>
+
+                        </div>
+                        <!-- TERCEIRA LINHA  -->
+                        <div class="row  rowThreeLine">
+
+                            <div class="col-1 col-sm-1 columnThreeLineBtn">
+                                <a type="button" class="IdentifyComponentLine textValue" id="idcolumnSecondDelivery">D</a>
+                            </div>
+
+                            <div class="col-3 col-sm-2 columnThreeLine" id="idcolumnThreeLinePCproduzidas">
+                                <p class="textInformation" id="paragrafoPCproduzidas">PÇ PRODUZIDAS</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnThreeId1">
+                                    <p class="textValue" id="calculoPCproduzidas"></p>
+                                </a>
+                                <p class="textInformation" id="paragrafoTargetPCproduzidas"></p>
+                            </div>
+
+                            <div class="col-3 col-sm-2 columnThreeLine" id="idcolumnThreeLineEficiencia">
+                                <p class="textInformation" id="paragrafoEficiencia">OEE</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnThreeId2">
+                                    <p class="textValue" id="calculoEficiencia"></p>
+                                </a>
+                                <p class="textInformation" id="paragrafoTargetEficiencia">TARGET: 80%</p>
+                            </div>
+                            
+                        </div>
+                        <!-- QUARTA LINHA  -->
+                        <div class="row  rowFourLine">
+
+                            <div class="col-1 col-sm-1 columnFourLineBtn">
+                                <a type="button" class="IdentifyComponentLine textValue" id="idcolumnSecondProd">P</a>
+                            </div>
+
+                            <div class="col-3 col-sm-2 columnFourLine" id="idcolumnFourLineEficiencia">
+                                <p class="textInformation" id="paragrafoProdutividade">H. PRODUTIVIDADE</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnFourId1">
+                                    <p class="textValue" id="calculoProdutividade"></p>
+                                </a>
+                                <p class="textInformation" id="paragrafoTargetPordutividade">TARGET: 85%</p>
+                            </div>
+
+                            <div class="col-3 col-sm-2 columnFourLine" id="idcolumnFourLineHproduzidas">
+                                <p class="textInformation" id="paragrafoHproduzida">H. GERADAS</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnFourId1">
+                                    <p class="textValue" id="calculoHproduzidas"></p>
+                                </a>
+                                <p class="textInformation" id="calculoTargetHproduzida">TARGET: 19.5H</p>
+                            </div>
+                            
+                            <div class="col-3 col-sm-2 columnFourLine" id="idcolumnFourLineParadaPGR">
+                                <p class="textInformation" id="paragrafoHmovimentadas">PARADA PGR</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnFourId1">
+                                    <p class="textValue" id="calculoParadaProgramada"></p>
+                                </a>
+                                <p class="textInformation" id="paragrafoTargetHmovimentada">TARGET: 3H</p>
+                            </div>
+                            
+                            <div class="col-3 col-sm-2 columnFourLine" id="idcolumnFourLineParadaNaoPGR">
+                                <p class="textInformation" id="paragrafoHparada">PARADA NÃO PGR</p>
+                                <a type="button" class="IdentifyComponentLine" id="columnFourId1">
+                                    <p class="textValue" id="calculoParadaNaoProgramada"></p>
+                                </a>
+                                <p class="textInformation" id="paragrafoTargetHparada">TARGET: 0H</p>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL PARA CRIAR AS TABELA RELACIONADO AO CARDE DE CADA INFORMAÇÃO DO PROCESSO  -->
+        <div class="modal fade" id="modalList" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <p id="descricao_paragrafo"></p>
+                            <table class="table text-balck" id="tabela_linha"><thead class="thread-default"></thead></table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="dataModal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">SELECIONE DATA DESEJADA</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <input type="date" id="dateAtual">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" id="enviarDate">Enviar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        <%- include ('../partials/footer.ejs'); -%>
+        <script type="module" src="/js/linha/linhaMonitoramento.js"></script>

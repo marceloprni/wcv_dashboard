@@ -1,0 +1,91 @@
+<%- include ('../partials/header.ejs'); -%>
+<%- include ('../partials/navbar.ejs'); -%>
+
+
+<div class="container-fluid h-100">
+
+    <div class="row justify-content-center text-black btn_gerais">
+            <label for="recipient-name" class="col-form-label">Nº Produção:</label>
+            <input type="text" name="daterange" id="text_producao">
+            <button type="button" class="btn btn-secondary" id="gerarRelatorio">Gerar Relatório</button>
+            <button type="button" class="btn btn-secondary" id="geraRelatorioPdf">Gerar PDF</button>
+            <button type="button" class="btn btn-secondary" id="gerarRelatorioCsv">Gerar CSV</button>
+            <button type="button" class="btn btn-secondary" id="gerarRelatorioExcel">Gerar Excel</button>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center">
+
+        <div class="div_externa">
+            <div class="card text-black o-hidden bg-light border-info text-center h-100">
+                <h5 class="card-title" >RELATORIO DE PRODUÇÃO</h5>  
+                <section class="descritivo_Orderm">
+                    <label for="recipient-name" class="col-form-label">Ordem de Produção:</label>
+                    <p id="ordemProducao"></p>
+                    <label for="recipient-name" class="col-form-label">Usuário Criação:</label>
+                    <p id="usuarioCriacao"></p>
+                    <label for="recipient-name" class="col-form-label">Usuário Execução:</label>
+                    <p id="usuarioExecucao"></p>
+                    <label for="recipient-name" class="col-form-label">Data de Criação:</label>
+                    <p id="dataCriacao"></p>
+                    <!-- 
+                    <label for="recipient-name" class="col-form-label">Data de Início:</label>
+                    <p>adsadasdasd</p>
+                    <label for="recipient-name" class="col-form-label">Data de Fim:</label>
+                    <p>adasdasdasdas</p> -->
+                    <label for="recipient-name" class="col-form-label">Linha:</label>
+                    <p id="linhaNome"></p>
+                    <label for="recipient-name" class="col-form-label">Lote:</label>
+                    <p id="lote"></p>
+                </section>
+                
+
+                <div class="table-responsive">
+                    
+                    <div class="table_principal">
+                        <h2 class="table">Consumo</h2>
+                        <table class="table text-black" id="tabela-relatorio">
+                        
+                            <tfoot>
+                                <tr>
+                                    <th>Total</th>
+                                    <th></th> <!-- Insumo -->
+                                    <th></th> <!-- Local -->
+                                    <th  id="tFootDesejado"></th> <!-- Desejado -->
+                                    <th id="tFootReal" ></th> <!-- Real -->
+                                    <th id="tFootErro" ></th> <!-- Erro -->
+                                    <th id="tFootPermitido"></th> <!-- Erro Permitido -->
+                                    <th id="tFootTempo" ></th> <!-- Tempo (s) -->
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <div class="table_principal">
+                        <h2 class="table">Parâmetros</h2>
+                        <table class="table text-black" id="tabela-parametros">
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="modal fade" id="mensagemLetra" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+            <p>Por favor digitar um numero que não seja letra.</p>
+        </div>
+    </div>
+</div>
+
+
+<%- include ('../partials/footer.ejs'); -%>
+<script type="module" src="/js/relatorio/relatorioProducao.js"></script>
