@@ -10,13 +10,11 @@ import { criarTabela,
  } from './functionGeraTable.js';
 
 
-
 var numBerProduction = document.getElementById("text_producao");
 
 // GERA O RELATORIO
 jQuery('#gerarRelatorio').on("click", function criarUsuarios(e){
     e.preventDefault();
-    
     let numberPrincipal = numBerProduction.value;
     criarTabela(numberPrincipal)    
 });
@@ -24,7 +22,6 @@ jQuery('#gerarRelatorio').on("click", function criarUsuarios(e){
 // GERA O PDF
 jQuery('#geraRelatorioPdf').on('click', function(e) {
     e.preventDefault();
-    console.log('terra')
     gerarPdf()
 });
 
