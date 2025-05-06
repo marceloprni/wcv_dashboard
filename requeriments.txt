@@ -29,6 +29,9 @@ docker run --name coletordb -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=root" -d mysql:
 
 docker pull mcr.microsoft.com/mssql/server
 docker run -e  "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Docker123!" -p 1440:1433 -d mcr.microsoft.com/mssql/server:2022-latest 
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Docker123!" -e "MSSQL_INIT_SCRIPT=/scripts/init.sql" -v /caminho/para/seu/script:/scripts -p 1440:1433 -d --restart unless-stopped --name sqlserver-container mcr.microsoft.com/mssql/server:2022-latest
+- com nome do banco
+
 
 //router.post("/api/Machines/Receive", (req, res) => {
 //  const dateBody = req.body;
@@ -41,5 +44,77 @@ docker run -e  "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=Docker123!" -p 1440:1433 -d
 
 /* DOCKER */
 docker build -t aptivdashboard/node:latest .
-docker run -d -p 3400:3400 --name aptivdashboard aptivdashboard/node
+docker run -d --restart unless-stopped -p 3500:3500 --name aptivdashboard aptivdashboard/node
+
+
+SELECT TOP 20 
+ OP.DataAlteracao,  
+RP.Receita,
+RP.Valor,
+P.Descricao
+FROM OrdemProducaos OP
+JOIN ReceitaParametros RP ON RP.Receita = OP.Receita
+JOIN Parametros P ON P.Id = RP.Parametro
+WHERE OP.Codigo = '20009746'
+ORDER BY OP.DataAlteracao DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

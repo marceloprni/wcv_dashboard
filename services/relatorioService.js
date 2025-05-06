@@ -45,28 +45,28 @@ async function criarDadosSelecao(value) {
         let usuarioDadosGerais = await connection.query(`
             
                 SELECT 
-                OP.Id
-                      ,Codigo
-                      ,Receita
-                      ,OP.DataCriacao
-                      ,OP.DataAlteracao
-                      ,UsuarioCriacao
-                      ,OP.Status
-                      ,QuantidadePrevista
-                      ,OP.Descricao
-                      ,Linha
-                      ,UsuarioAlteracao
-                      ,BatchsProduzidos
-                      ,Prioridade
-                      ,TamanhoBatch
-                      ,Lote
-                      ,U1.Descricao 'UserC'
-                      ,U2.Descricao 'UserA'
-                      ,U3.Nome 'Nome_Linha'
-                  FROM OrdemProducaos OP
-                  JOIN Usuarios U1 ON U1.Id = OP.UsuarioAlteracao
-                  JOIN Usuarios U2 ON U2.Id = OP.UsuarioCriacao
-                  JOIN Linhas U3 ON U3.id = OP.Linha
+                    OP.Id,
+                    Codigo,
+                    Receita,
+                    OP.DataCriacao,
+                    OP.DataAlteracao,
+                    UsuarioCriacao,
+                    OP.Status,
+                    QuantidadePrevista,
+                    OP.Descricao,
+                    Linha,
+                    UsuarioAlteracao,
+                    BatchsProduzidos,
+                    Prioridade,
+                    TamanhoBatch,
+                    Lote,
+                    U1.Descricao 'UserC',
+                    U2.Descricao 'UserA',
+                    U3.Nome 'Nome_Linha'
+                FROM OrdemProducaos OP
+                JOIN Usuarios U1 ON U1.Id = OP.UsuarioAlteracao
+                JOIN Usuarios U2 ON U2.Id = OP.UsuarioCriacao
+                JOIN Linhas U3 ON U3.id = OP.Linha
                 WHERE OP.Codigo = '${variavelValue}';
             
             `,
@@ -84,7 +84,7 @@ async function criarDadosSelecao(value) {
                 FROM OrdemProducaos OP
                 JOIN ReceitaParametros RP ON RP.Receita = OP.Receita
                 JOIN Parametros P ON P.Id = RP.Parametro
-                WHERE OP.Codigo = '${variavelValue}'
+                WHERE OP.Codigo = '${variavelValue}' and RP.Status = 'A'
                 ORDER BY OP.DataAlteracao DESC;
 
             `,
@@ -92,7 +92,7 @@ async function criarDadosSelecao(value) {
                 type: QueryTypes.SELECT,
             })
 
-            
+        console.log(usuarioDadosGerais)
 
         return {
             producaoGerais: dadosGeraisProducao,

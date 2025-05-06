@@ -1,6 +1,12 @@
+
 .div_externa {
     display: flex;
     flex-direction: column;
+    width: 100rem;
+}
+
+.title_principal_geral {
+    margin-top: 0.5rem;
 }
 
 .btn_gerais {
@@ -26,8 +32,13 @@
 }
 
 .descritivo_Orderm  p {
-    margin: 0;
-    font-size: 0.9rem;
+    max-width: 150px; /* Limita a largura máxima do parágrafo */
+    word-wrap: break-word; /* Quebra palavras longas */
+    white-space: normal; /* Permite quebra de linha natural */
+    overflow: hidden; /* Esconde conteúdo que excede */
+    text-overflow: ellipsis; /* Adiciona "..." se o texto for truncado (opcional) */
+    margin: 0; /* Remove margens padrão */
+    font-size: 15px;
 }
 
 .descritivo_Orderm  label {
@@ -54,54 +65,71 @@
     justify-content: space-between;
     align-items: flex-start;
     flex-grow: 1;
+    width: 100rem;
+    margin: 0;
+    padding: 0;
 }
 
 
-.table_principal {
+.table_principal1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     width: 50rem;
-    
+    margin: 0;
+    padding: 0;
+}
+
+.table_principal2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50rem;
+    margin: 0;
+    padding: 0;
 }
 
 #tabela-relatorio{
-    gap: 0.5rem;
     width: 50rem;
     height: auto;
     text-transform: uppercase; 
-    font-size: 1rem; 
+    font-size: 0.8rem; 
 }
 
 #tabela-parametros {
-    gap: 0.5rem;
     width: 50rem;
     height: auto;
     text-transform: uppercase; 
-    font-size: 1rem; 
+    font-size: 0.8rem; 
+}
+
+#tabela-relatorio_wrapper {
+    width: 50rem;
 }
 
 #tabela-relatorio thead tr {
-    height: 6.18rem;
+    height: 5rem;
     background-color: rgb(121, 124, 124);
     color: aliceblue;
 }
 
 #tabela-parametros thead tr {
-    height: 6.16rem;
+    height: 5rem;
     background-color: rgb(121, 124, 124);
     color: aliceblue;
 }
 
 
 #tabela-relatorio tbody tr td {
-    height: 5rem;
+    height: 4rem;
     color: #3D3D3D;
     font-weight: bold;
 }
 
 #tabela-parametros tbody tr td {
-    height: 5rem;
+    height: 4rem;
     color: #3D3D3D;
     font-weight: bold;
 }
@@ -113,3 +141,5 @@
 #tabela-parametros_filter label input {
     margin-right: 10px;
 }
+
+/* MEDIA QUERY */
