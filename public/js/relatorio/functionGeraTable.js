@@ -102,7 +102,7 @@ function criarTabela(value1) {
         // Para cada batch, cria as tabelas
         Object.keys(gruposPorBatch).forEach(batch => {
             let dadosBatch = gruposPorBatch[batch];
-
+            let datadosagem1;
             // Calcula os totais
             let totalDesejado = 0, totalReal = 0, totalErro = 0, totalPermitido = 0, totalTempo = 0;
             let dataTableArray = [];
@@ -115,6 +115,7 @@ function criarTabela(value1) {
                 totalErro += parseFloat(a.Erro_Kg) || 0;
                 totalPermitido += parseFloat(a.Erro_Permitido) || 0;
                 totalTempo += parseFloat(a.Tempo_de_Dosagem) || 0;
+                datadosagem1 = a.Data_Dosagem;
             }
 
             // Gera IDs únicos por classe
@@ -125,7 +126,7 @@ function criarTabela(value1) {
             let tabelaHtml = `
                 <div class="table-responsive" id="batchId${batch}">
                     <div class="table_principal1">
-                        <h2 class="table">Consumo Batch: ${batch}</h2>
+                        <h2 class="table">Batch ${batch} - Data ${dataHora(datadosagem1)}</h2>
                         <table class="table text-black ${tabelaRelatorioClass}"  id="tabela-relatorio">
                             <thead>
                                 <tr>

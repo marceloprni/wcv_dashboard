@@ -92,7 +92,7 @@ async function criarDadosSelecao(value) {
                 type: QueryTypes.SELECT,
             })
 
-        console.log(usuarioDadosGerais)
+        
 
         return {
             producaoGerais: dadosGeraisProducao,
