@@ -10,7 +10,7 @@ body{
 }
 
 i {
-	margin-right: 10px;
+	margin-right: 0.6rem;
 }
 
 /*----------bootstrap-navbar-css------------*/
@@ -19,10 +19,17 @@ i {
 	background-color: #212529;
 }
 
+.navbarLink {
+	display: flex;
+	gap: 1rem;
+}
+
 .navbarLink a {
+	display: flex;
+	align-items: center;
 	background-color: rgb(121, 124, 124);
 	color: #f8f9fa;
-	border-radius: 2px;
+	height: 4rem;
 }
 
 #logo_geral {

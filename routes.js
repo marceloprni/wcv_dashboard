@@ -22,6 +22,10 @@ router.get("/", (req, res) => {
 
 router.get("/relatorio/:idProducao", controllerRelatorio.criarTabelaRelatorio)
 
+/***************** ROTA DE Monitoramento *****************/
 
+router.get("/monitoramento", (req, res) => { 
+  res.render("monitoramento/monitoramento");
+});
 
 module.exports = router
