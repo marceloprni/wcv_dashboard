@@ -2,8 +2,10 @@ const express = require('express');
 const session = require("express-session");
 const router = express.Router();
 const relatorioController  = require('./controller/relatorioController');
+const monitoramentoController = require("./controller/monitoramentoController");
 
 const controllerRelatorio = new relatorioController();
+const monitoramentoDashboard = new monitoramentoController();
 
 router.use(session({
   secret: "secret",
@@ -27,5 +29,7 @@ router.get("/relatorio/:idProducao", controllerRelatorio.criarTabelaRelatorio)
 router.get("/monitoramento", (req, res) => { 
   res.render("monitoramento/monitoramento");
 });
+
+router.get("/monitoramento/dados", monitoramentoDashboard.dadosDashboard);
 
 module.exports = router

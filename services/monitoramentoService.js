@@ -1,0 +1,52 @@
+const { Op, Sequelize, QueryTypes} = require("sequelize");
+const connection = require('../database/database'); 
+const { AplicacaoErro } = require("../erros/typeErros")
+const { DatetimeDashboard } = require("../utils/tratarTime")
+
+async function monitoramento() {
+
+    try {
+        const dataTime = DatetimeDashboard();
+        //WHERE ia.DataCriacao >= '${dataTime} 06:00:00' AND ia.DataCriacao <= '${dataTime} 23:59:59'
+
+        let dadosGeraisProducao = await connection.query(`
+                SELECT 
+                opc.OrdemProducao,
+                ia.Linha,
+                opc.Batch,
+                CAST(SUM(opc.QuantidadeTeorica) AS DECIMAL(18,2)) AS Soma_QuantidadeTeorica,
+                CAST(SUM(opc.QuantidadeReal) AS DECIMAL(18,2)) AS Soma_QuantidadeReal
+                FROM OrdemProducaoConsumos opc
+                JOIN OrdemProducaos ia ON opc.OrdemProducao = ia.ID 
+                WHERE ia.DataCriacao >= '2025-05-05 06:00:00' AND ia.DataCriacao <= '2025-05-05 23:59:59'
+                GROUP BY opc.OrdemProducao, ia.Linha, opc.Batch
+                ORDER BY opc.OrdemProducao, opc.Batch;
+            `,
+            {
+                type: QueryTypes.SELECT,
+            })
+
+        let dadosOperacaoOn = await connection.query(`
+                select Linha
+                from OrdemProducaos
+                where Status = 'A';
+            `,
+            {
+                type: QueryTypes.SELECT,
+            })
+    
+        return {
+            dados: dadosGeraisProducao,
+            operationOn: dadosOperacaoOn
+        }
+      
+    } catch (error) {
+        return new AplicacaoErro(500, 'Erro na query produtos ou valor invalido')
+    }
+    
+
+}
+
+module.exports = {
+    monitoramento
+}

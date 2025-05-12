@@ -101,7 +101,7 @@ async function criarDadosSelecao(value) {
         }
       
     } catch (error) {
-        return AplicacaoErro(500, 'Erro na query produtos ou valor invalido')
+        return new AplicacaoErro(500, 'Erro na query produtos ou valor invalido')
     }
     
 }
