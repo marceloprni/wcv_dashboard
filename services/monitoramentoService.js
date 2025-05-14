@@ -29,7 +29,7 @@ async function monitoramento() {
         let dadosOperacaoOn = await connection.query(`
                 select Linha
                 from OrdemProducaos
-                where Status = 'A';
+                where Status = 'A' and DataCriacao >= '2025-05-05 06:00:00' AND DataCriacao <= '2025-05-05 23:59:59';
             `,
             {
                 type: QueryTypes.SELECT,

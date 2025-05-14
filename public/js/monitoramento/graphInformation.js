@@ -29,7 +29,7 @@ function drawRing(canvas, color, value){
     ctx.textAlign = 'center';
     ctx. textBaseline = 'middle';
     ctx.fillStyle = "black";
-    ctx.font = "30px Arial";
+    ctx.font = "1.2rem Arial";
     ctx.fillText(String(value), (canvas.width / 2), (canvas.height / 2));
     /*Draw ring*/
     ctx.beginPath()

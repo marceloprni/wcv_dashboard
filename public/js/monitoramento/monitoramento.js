@@ -23,7 +23,23 @@ var ctx4 = document.getElementById("grafico-4");
 
 var indicadores = ["Disponibilidade", "Performance", "Qualidade"];
 var colouarray = ['red', 'green', 'blue'];
-var color1 = ['#003f5c', '#58508d' ,'#bc5090', '#ff6361', '#ffa600'];
+var color1 = [
+        '#ff003c', 
+        '#ff8a00',
+        '#fabe28', 
+        '#88c100', 
+        '#00c176', 
+        '#d31900', 
+        '#ff6600', 
+        '#fff2af', 
+        '#7cb490', 
+        '#000000',
+        '#542638',
+        '#8f244d',
+        '#e7c049',
+        '#c94d65'
+
+    ];
 const maquinas = [
   { linha: 1 },
   { linha: 2 },
@@ -42,7 +58,7 @@ setTimeout( () => {
     axios.get(`/monitoramento/dados`).then(response => {
         const dados = response.data;
         
-
+            console.log(dados)
             maquinas.forEach(maquina => {
                 $(`#linha${maquina.linha}Operation`).css('background-color', '#e6626f');
                 drawRing(document.getElementById(`value-${maquina.linha}`), "#e6626f", "");
@@ -54,11 +70,12 @@ setTimeout( () => {
                 const maquinaOperando = maquinas.find(m => m.linha === item.Linha);
                     if (maquinaOperando) {
                         $(`#linha${maquinaOperando.linha}Operation`).css('background-color', '#66af91');
-                        drawRing(document.getElementById(`value-${maquinaOperando.linha}`), '#66af91', "");
-                        drawRing(document.getElementById(`value-${maquinaOperando.linha}a`), '#66af91', "");
+                        drawRing(document.getElementById(`value-${maquinaOperando.linha}`), '#66af91', 1000000.23);
+                        drawRing(document.getElementById(`value-${maquinaOperando.linha}a`), '#66af91', 1000000.23);
                     } 
             });
     })
 
-}, 500)
+}, 1000)
+
 
