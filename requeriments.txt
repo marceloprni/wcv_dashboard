@@ -60,11 +60,65 @@ ORDER BY OP.DataAlteracao DESC;
 
 
 
+Linha3 =
+[
+{OrdemProducao: 135, Linha: 3, Batch: 1, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 796.8},
+{OrdemProducao: 135, Linha: 3, Batch: 2, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 794.3},
+{OrdemProducao: 135, Linha: 3, Batch: 3, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 796},
+{OrdemProducao: 135, Linha: 3, Batch: 4, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 794.7},
+{OrdemProducao: 135, Linha: 3, Batch: 5, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 796.9},
+{OrdemProducao: 135, Linha: 3, Batch: 6, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 803},
+{OrdemProducao: 135, Linha: 3, Batch: 7, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 799.6},
+{OrdemProducao: 136, Linha: 3, Batch: 1, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 787},
+{OrdemProducao: 136, Linha: 3, Batch: 2, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 790.3},
+{OrdemProducao: 136, Linha: 3, Batch: 3, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 787.1},
+{OrdemProducao: 136, Linha: 3, Batch: 4, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 787.2},
+{OrdemProducao: 136, Linha: 3, Batch: 5, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 786.8},
+{OrdemProducao: 136, Linha: 3, Batch: 6, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 786.3},
+{OrdemProducao: 136, Linha: 3, Batch: 7, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 788.6},
+{OrdemProducao: 136, Linha: 3, Batch: 8, Soma_QuantidadeTeorica: 91.2, Soma_QuantidadeReal: 91.2},
+{OrdemProducao: 136, Linha: 3, Batch: 9, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 784.4},
+{OrdemProducao: 136, Linha: 3, Batch: 10, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 788.4},
+{OrdemProducao: 136, Linha: 3, Batch: 11, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 781},
+{OrdemProducao: 136, Linha: 3, Batch: 12, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 782.3},
+{OrdemProducao: 136, Linha: 3, Batch: 13, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 783.1},
+{OrdemProducao: 136, Linha: 3, Batch: 14, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 787},
+{OrdemProducao: 136, Linha: 3, Batch: 15, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 784.1}
+];
+
+eu gostaria de separar por OrdemProducao diferente como 135, 136
 
 
+{
+135: [
+{OrdemProducao: 135, Linha: 3, Batch: 1, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 796.8},
+{OrdemProducao: 135, Linha: 3, Batch: 2, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 794.3},
+{OrdemProducao: 135, Linha: 3, Batch: 3, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 796},
+{OrdemProducao: 135, Linha: 3, Batch: 4, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 794.7},
+{OrdemProducao: 135, Linha: 3, Batch: 5, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 796.9},
+{OrdemProducao: 135, Linha: 3, Batch: 6, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 803},
+{OrdemProducao: 135, Linha: 3, Batch: 7, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 799.6}
+]
+136: [
+{OrdemProducao: 136, Linha: 3, Batch: 1, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 787},
+{OrdemProducao: 136, Linha: 3, Batch: 2, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 790.3},
+{OrdemProducao: 136, Linha: 3, Batch: 3, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 787.1},
+{OrdemProducao: 136, Linha: 3, Batch: 4, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 787.2},
+{OrdemProducao: 136, Linha: 3, Batch: 5, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 786.8},
+{OrdemProducao: 136, Linha: 3, Batch: 6, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 786.3},
+{OrdemProducao: 136, Linha: 3, Batch: 7, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 788.6},
+{OrdemProducao: 136, Linha: 3, Batch: 9, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 784.4},
+{OrdemProducao: 136, Linha: 3, Batch: 10, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 788.4},
+{OrdemProducao: 136, Linha: 3, Batch: 11, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 781},
+{OrdemProducao: 136, Linha: 3, Batch: 12, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 782.3},
+{OrdemProducao: 136, Linha: 3, Batch: 13, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 783.1},
+{OrdemProducao: 136, Linha: 3, Batch: 14, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 787},
+{OrdemProducao: 136, Linha: 3, Batch: 15, Soma_QuantidadeTeorica: 800, Soma_QuantidadeReal: 784.1}
+]
+}
 
-
-
+eu quero somar o total das variaveris Soma_QuantidadeTeorica, Soma_QuantidadeTeorica e depois 
+adicionar em array diferente como Soma_QuantidadeTeorica = [], Soma_QuantidadeReal = []
 
 
 

@@ -1,35 +1,15 @@
 
-const options1 = {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            },
-            // Define o tamanho do gráfico
-            layout: {
-                padding: {
-                    left: 50,
-                    right: 50,
-                    top: 0,
-                    bottom: 0
-                }
-            },
-            // Define o tamanho do canvas
-            maintainAspectRatio: false,
-            responsive: true,
-            // Define o tamanho do canvas diretamente
-            width: 400,
-            height: 200
-};
-
 
 function drawRing(canvas, color, value){
     var ctx = canvas.getContext('2d');
     /*Draw text*/
+    // Limpa o canvas antes de desenhar
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
     ctx.textAlign = 'center';
     ctx. textBaseline = 'middle';
-    ctx.fillStyle = "black";
-    ctx.font = "1.2rem Arial";
+    ctx.fillStyle = "#404040";
+    ctx.font = "1.1rem Roboto";
     ctx.fillText(String(value), (canvas.width / 2), (canvas.height / 2));
     /*Draw ring*/
     ctx.beginPath()
@@ -40,22 +20,22 @@ function drawRing(canvas, color, value){
     return true;
 }
 
-function graphLine(ctx, labels, data) {
+function graphLine(ctx, labels, data1, data2) {
     return new Chart(ctx, {
         type: 'line', 
         data:   {
-            labels: [1,2,3,4,5,6],
+            labels: [0,...labels],
             datasets: [
                 {
-                  label: 'TaktTime 1',
-                  data: [1, 2, 3, 4], // primeiros valores
+                  label: 'Quantidade Teórica',
+                  data: [0,...data1], // primeiros valores
                   fill: false,
                   borderColor: 'rgb(39, 61, 61)',
                   tension: 0.1
                 },
                 {
-                  label: 'TaktTime 2',
-                  data: [2, 3, 5, 3], // segundos valores
+                  label: 'Quantidade Real',
+                  data: [0,...data2], // segundos valores
                   fill: false,
                   borderColor: 'rgb(72, 199, 199)',
                   tension: 0.1
@@ -89,8 +69,63 @@ function graphLine(ctx, labels, data) {
 }
 
 
+function graphlBarra(ctx, labels, data1, data2) {
+    return new Chart(ctx, {
+        type: 'bar', // Corrigido para minúsculo
+        data: {
+            labels: [...labels],
+            datasets: [
+                {
+                    label: 'Quantidade Teórica',
+                    data: [...data1],
+                    backgroundColor: [
+                      'rgba(109, 139, 137, 0.5)',
+                      'rgba(71, 102, 123, 0.5)',
+                    ],
+                    borderColor: [
+                      'rgba(109, 139, 137, 1)',
+                      'rgba(71, 102, 123, 1)',
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Quantidade Real',
+                    data: [...data2],
+                    backgroundColor: [
+                      'rgba(71, 102, 123, 0.5)',
+                      'rgba(111, 149, 255, 0.5)',
+                    ],
+                    borderColor: [
+                      'rgba(71, 102, 123, 1)',
+                      'rgba(111, 149, 255, 1)',
+                    ],
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            layout: {
+                padding: {
+                    left: 50,
+                    right: 50,
+                    top: 0,
+                    bottom: 0
+                }
+            },
+            maintainAspectRatio: false,
+            responsive: true
+        }
+    });
+}
+
+
 export {
     drawRing,
-    options1,
-    graphLine
+    graphLine,
+    graphlBarra
 }

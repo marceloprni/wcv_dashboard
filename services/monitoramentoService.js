@@ -34,10 +34,20 @@ async function monitoramento() {
             {
                 type: QueryTypes.SELECT,
             })
+        
+        let dadosReceitaOn =  await connection.query(`
+                select id, Linha, Descricao
+                from OrdemProducaos
+                where DataCriacao >= '2025-05-05 06:00:00' AND DataCriacao <= '2025-05-05 23:59:59';
+            `,
+            {
+                type: QueryTypes.SELECT,
+            })
     
         return {
             dados: dadosGeraisProducao,
-            operationOn: dadosOperacaoOn
+            operationOn: dadosOperacaoOn,
+            receitaOn: dadosReceitaOn
         }
       
     } catch (error) {
