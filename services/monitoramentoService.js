@@ -7,6 +7,7 @@ async function monitoramento() {
 
     try {
         const dataTime = DatetimeDashboard();
+        console.log(dataTime);
         //WHERE ia.DataCriacao >= '${dataTime} 06:00:00' AND ia.DataCriacao <= '${dataTime} 23:59:59'
 
         let dadosGeraisProducao = await connection.query(`
@@ -18,7 +19,7 @@ async function monitoramento() {
                 CAST(SUM(opc.QuantidadeReal) AS DECIMAL(18,2)) AS Soma_QuantidadeReal
                 FROM OrdemProducaoConsumos opc
                 JOIN OrdemProducaos ia ON opc.OrdemProducao = ia.ID 
-                WHERE ia.DataCriacao >= '2025-05-05 00:00:01' AND ia.DataCriacao <= '2025-05-05 23:59:59'
+                WHERE opc.DataCriacao >= '2025-05-15 00:00:01' AND opc.DataCriacao <= '2025-05-15 23:59:59'
                 GROUP BY opc.OrdemProducao, ia.Linha, opc.Batch
                 ORDER BY opc.OrdemProducao, opc.Batch;
             `,
@@ -27,22 +28,33 @@ async function monitoramento() {
             })
 
         let dadosOperacaoOn = await connection.query(`
-                select Linha
+                SELECT  Linha
                 from OrdemProducaos
-                where Status = 'A' and DataCriacao >= '2025-05-05 06:00:00' AND DataCriacao <= '2025-05-05 23:59:59';
+                where Status = 'A' and DataCriacao >= '2025-05-15 00:00:01' AND DataCriacao <= '2025-05-15 23:59:59';
             `,
             {
                 type: QueryTypes.SELECT,
             })
         
         let dadosReceitaOn =  await connection.query(`
-                select id, Linha, Descricao
-                from OrdemProducaos
-                where DataCriacao >= '2025-05-05 06:00:00' AND DataCriacao <= '2025-05-05 23:59:59';
+                SELECT
+                MAX(ia.id) AS id,           
+                MAX(ia.Linha) AS Linha,     
+                ia.Descricao
+                FROM OrdemProducaoConsumos opc
+                JOIN OrdemProducaos ia ON opc.OrdemProducao = ia.ID
+                WHERE opc.DataCriacao >= '2025-05-15 00:00:01' AND opc.DataCriacao <= '2025-05-15 23:59:59'
+                GROUP BY ia.Descricao
+                ORDER BY MAX(ia.id);
             `,
             {
                 type: QueryTypes.SELECT,
             })
+
+
+            console.log(dadosGeraisProducao);
+        console.log(dadosOperacaoOn);
+        console.log(dadosReceitaOn);
     
         return {
             dados: dadosGeraisProducao,

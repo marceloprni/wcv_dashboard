@@ -91,9 +91,13 @@ function getDadoGraph() {
                     } 
             });
 
+
              /*#################################### LINHA 1 #################################*/
             const linha1 = dados.dados.filter(item => item.Linha === 1);
 
+            console.log('linha 1')
+            console.log(linha1)
+            // Agrupa os itens por OrdemProducao
             const agrupadoPorProducao1 = linha1.reduce((acc, item) => {
                     if (!acc[item.OrdemProducao]) {
                             acc[item.OrdemProducao] = [];
@@ -138,8 +142,8 @@ function getDadoGraph() {
                 somaQuantidadeRealArray1
               );
 
-              $(canvas1).css('border-color', '#66af91').text(`${somatotalTeorica1} Kg`);
-              $(canvas2).css('border-color', '#66af91').text(`${somatotalReal1} Kg`);
+              $(canvas1).css('border-color', '#66af91').text(`${somatotalTeorica1.toFixed(1)} Kg`);
+              $(canvas2).css('border-color', '#66af91').text(`${somatotalReal1.toFixed(1)} Kg`);
               
               //drawRing(canvas1, "#66af91", `${somatotalTeorica1} Kg`);
               //drawRing(canvas2, "#66af91", `${somatotalReal1} Kg`);
@@ -151,8 +155,8 @@ function getDadoGraph() {
                 somaQuantidadeRealArray1
               );
 
-              $(canvas1).css('border-color', '#e6626f').text(`${somatotalTeorica1} Kg`);
-              $(canvas2).css('border-color', '#e6626f').text(`${somatotalReal1} Kg`);
+              $(canvas1).css('border-color', '#e6626f').text(`${somatotalTeorica1.toFixed(1)} Kg`);
+              $(canvas2).css('border-color', '#e6626f').text(`${somatotalReal1.toFixed(1)} Kg`);
 
               //drawRing(canvas1, "#e6626f", `${somatotalTeorica1} Kg`);
               //drawRing(canvas2, "#e6626f", `${somatotalReal1} Kg`);
@@ -161,6 +165,8 @@ function getDadoGraph() {
             /*#################################### LINHA 2 #################################*/
             const linha2 = dados.dados.filter(item => item.Linha === 2);
 
+            console.log('linha 2')
+            console.log(linha2)
             const agrupadoPorProducao2 = linha2.reduce((acc, item) => {
                     if (!acc[item.OrdemProducao]) {
                             acc[item.OrdemProducao] = [];
@@ -205,8 +211,8 @@ function getDadoGraph() {
                 somaQuantidadeRealArray2
               );
 
-              $(canvas3).css('border-color', '#66af91').text(`${somatotalTeorica2} Kg`);
-              $(canvas4).css('border-color', '#66af91').text(`${somatotalReal2} Kg`);
+              $(canvas3).css('border-color', '#66af91').text(`${somatotalTeorica2.toFixed(1)} Kg`);
+              $(canvas4).css('border-color', '#66af91').text(`${somatotalReal2.toFixed(1)} Kg`);
               
               //drawRing(canvas3, "#66af91", `${somatotalTeorica2} Kg`);
               //drawRing(canvas4, "#66af91", `${somatotalReal2} Kg`);
@@ -218,8 +224,8 @@ function getDadoGraph() {
                 somaQuantidadeRealArray2
               );
 
-              $(canvas3).css('border-color', '#e6626f').text(`${somatotalTeorica2} Kg`);
-              $(canvas4).css('border-color', '#e6626f').text(`${somatotalReal2} Kg`);
+              $(canvas3).css('border-color', '#e6626f').text(`${somatotalTeorica2.toFixed(1)} Kg`);
+              $(canvas4).css('border-color', '#e6626f').text(`${somatotalReal2.toFixed(1)} Kg`);
 
               //drawRing(canvas3, "#e6626f", `${somatotalTeorica2} Kg`);
               //drawRing(canvas4, "#e6626f", `${somatotalReal2} Kg`);
@@ -264,7 +270,11 @@ function getDadoGraph() {
             const somatotalTeorica3 = somaQuantidadeTeoricaArray3.reduce((acc, val) => acc + parseFloat(val), 0);
             const somatotalReal3 = somaQuantidadeRealArray3.reduce((acc, val) => acc + parseFloat(val), 0);
             
-            const dadosoperation3 =dados.operationOn.find(item => item.Linha === 3);
+            const dadosoperation3 = dados.operationOn.find(item => item.Linha === 3);
+
+            console.log(letDescricaoReceita3);
+            console.log(somaQuantidadeTeoricaArray3);
+            console.log(somaQuantidadeRealArray3);
 
             if (linha3.length > 0 && dadosoperation3) {
               graphlBarra(
@@ -274,8 +284,8 @@ function getDadoGraph() {
                 somaQuantidadeRealArray3
               );
 
-              $(canvas5).css('border-color', '#66af91').text(`${somatotalTeorica3} Kg`);
-              $(canvas6).css('border-color', '#66af91').text(`${somatotalReal3} Kg`);
+              $(canvas5).css('border-color', '#66af91').text(`${somatotalTeorica3.toFixed(1)} Kg`);
+              $(canvas6).css('border-color', '#66af91').text(`${somatotalReal3.toFixed(1)} Kg`);
 
 
               //drawRing(canvas5, "#66af91", `${somatotalTeorica3} Kg`);
@@ -288,8 +298,8 @@ function getDadoGraph() {
                 somaQuantidadeRealArray3
               );
 
-              $(canvas5).css('border-color', '#e6626f').text(`${somatotalTeorica3} Kg`);
-              $(canvas6).css('border-color', '#e6626f').text(`${somatotalReal3} Kg`);
+              $(canvas5).css('border-color', '#e6626f').text(`${somatotalTeorica3.toFixed(1)} Kg`);
+              $(canvas6).css('border-color', '#e6626f').text(`${somatotalReal3.toFixed(1)} Kg`);
 
               //drawRing(canvas5, "#e6626f", `${somatotalTeorica3} Kg`);
               //drawRing(canvas6, "#e6626f", `${somatotalReal3} Kg`);
@@ -344,8 +354,8 @@ function getDadoGraph() {
                 somaQuantidadeRealArray4
               );
 
-              $(canvas7).css('border-color', '#66af91').text(`${somatotalTeorica4} Kg`);
-              $(canvas8).css('border-color', '#66af91').text(`${somatotalReal4} Kg`);
+              $(canvas7).css('border-color', '#66af91').text(`${somatotalTeorica4.toFixed(1)} Kg`);
+              $(canvas8).css('border-color', '#66af91').text(`${somatotalReal4.toFixed(1)} Kg`);
 
               //drawRing(canvas7, "#66af91", `${somatotalTeorica4} Kg`);
               //drawRing(canvas8, "#66af91", `${somatotalReal4} Kg`);
@@ -357,8 +367,8 @@ function getDadoGraph() {
                 somaQuantidadeRealArray4
               );
 
-              $(canvas7).css('border-color', '#e6626f').text(`${somatotalTeorica4} Kg`);
-              $(canvas8).css('border-color', '#e6626f').text(`${somatotalReal4} Kg`);
+              $(canvas7).css('border-color', '#e6626f').text(`${somatotalTeorica4.toFixed(1)} Kg`);
+              $(canvas8).css('border-color', '#e6626f').text(`${somatotalReal4.toFixed(1)} Kg`);
 
               //drawRing(canvas7, "#e6626f", `${somatotalTeorica4} Kg`);
               //drawRing(canvas8, "#e6626f", `${somatotalReal4} Kg`);

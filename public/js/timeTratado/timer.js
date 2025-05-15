@@ -144,11 +144,37 @@ function updateClock() {
     return `${dateStr} ${timeStr}`;
 }
 
+function DatetimeDashboard(time) {
+
+    var DataHora;
+
+    if(!time) {
+        DataHora = new Date();
+       
+    } else {
+        DataHora = new Date(time);
+    }
+    
+    //console.log(DataHora);
+    const ano1 = DataHora.getFullYear();
+
+    const mes1 = DataHora.getMonth() + 1;
+    let mesConvertido = Inserir0Date(mes1);
+
+    const dia1 = DataHora.getDate();
+    let diaConvertido = Inserir0Date(dia1)
+
+    const Dhora = `${ano1}-${mesConvertido}-${diaConvertido}`;
+    return Dhora;
+}
+
+
 export {
     DateTime,
     DateTimeJunto,
     DateAddDay,
     valueTiraZero,
     Inserir0Date,
-    updateClock
+    updateClock,
+    DatetimeDashboard
 }
