@@ -41,9 +41,8 @@ var somaQuantidadeRealArray4 = [];
 //graphLine(ctx1)
 //graphLine(ctx2)
 
-
-setInterval( () => {
-    axios.get(`/monitoramento/dados`).then(response => {
+function getDadoGraph() {
+        axios.get(`/monitoramento/dados`).then(response => {
         const dados = response.data;
 
             // ARRAY PARA GRAFICOS 1
@@ -72,8 +71,11 @@ setInterval( () => {
 
             maquinas.forEach(maquina => {
                 $(`#linha${maquina.linha}Operation`).css('background-color', '#e6626f');
-                drawRing(document.getElementById(`value-${maquina.linha}`), "#e6626f", '');
-                drawRing(document.getElementById(`value-${maquina.linha}a`), "#e6626f", '');
+                $(`#linha${maquina.linha}Operation`).css('background-color', '#e6626f');
+                $(document.getElementById(`value-${maquina.linha}`)).css('border-color', '#e6626f').text('0 Kg');
+                $(document.getElementById(`value-${maquina.linha}a`)).css('border-color', '#e6626f').text('0 Kg');
+                //drawRing(document.getElementById(`value-${maquina.linha}`), "#e6626f", '');
+                //drawRing(document.getElementById(`value-${maquina.linha}a`), "#e6626f", '');
             });
 
             
@@ -82,8 +84,10 @@ setInterval( () => {
                     console.log(maquinaOperando);
                     if (maquinaOperando) {
                         $(`#linha${maquinaOperando.linha}Operation`).css('background-color', '#66af91');
-                        drawRing(document.getElementById(`value-${maquinaOperando.linha}`), '#66af91', '');
-                        drawRing(document.getElementById(`value-${maquinaOperando.linha}a`), '#66af91','');
+                         $(document.getElementById(`value-${maquinaOperando.linha}`)).css('border-color', '#66af91').text('');
+                         $(document.getElementById(`value-${maquinaOperando.linha}a`)).css('border-color', '#66af91').text('');
+                        //drawRing(document.getElementById(`value-${maquinaOperando.linha}`), '#66af91', '');
+                        //drawRing(document.getElementById(`value-${maquinaOperando.linha}a`), '#66af91','');
                     } 
             });
 
@@ -133,8 +137,12 @@ setInterval( () => {
                 somaQuantidadeTeoricaArray1,
                 somaQuantidadeRealArray1
               );
-              drawRing(canvas1, "#66af91", `${somatotalTeorica1} Kg`);
-              drawRing(canvas2, "#66af91", `${somatotalReal1} Kg`);
+
+              $(canvas1).css('border-color', '#66af91').text(`${somatotalTeorica1} Kg`);
+              $(canvas2).css('border-color', '#66af91').text(`${somatotalReal1} Kg`);
+              
+              //drawRing(canvas1, "#66af91", `${somatotalTeorica1} Kg`);
+              //drawRing(canvas2, "#66af91", `${somatotalReal1} Kg`);
             } else {
                 graphlBarra(
                 ctx1,
@@ -142,8 +150,12 @@ setInterval( () => {
                 somaQuantidadeTeoricaArray1,
                 somaQuantidadeRealArray1
               );
-              drawRing(canvas1, "#e6626f", `${somatotalTeorica1} Kg`);
-              drawRing(canvas2, "#e6626f", `${somatotalReal1} Kg`);
+
+              $(canvas1).css('border-color', '#e6626f').text(`${somatotalTeorica1} Kg`);
+              $(canvas2).css('border-color', '#e6626f').text(`${somatotalReal1} Kg`);
+
+              //drawRing(canvas1, "#e6626f", `${somatotalTeorica1} Kg`);
+              //drawRing(canvas2, "#e6626f", `${somatotalReal1} Kg`);
             }
 
             /*#################################### LINHA 2 #################################*/
@@ -192,8 +204,12 @@ setInterval( () => {
                 somaQuantidadeTeoricaArray2,
                 somaQuantidadeRealArray2
               );
-              drawRing(canvas3, "#66af91", `${somatotalTeorica2} Kg`);
-              drawRing(canvas4, "#66af91", `${somatotalReal2} Kg`);
+
+              $(canvas3).css('border-color', '#66af91').text(`${somatotalTeorica2} Kg`);
+              $(canvas4).css('border-color', '#66af91').text(`${somatotalReal2} Kg`);
+              
+              //drawRing(canvas3, "#66af91", `${somatotalTeorica2} Kg`);
+              //drawRing(canvas4, "#66af91", `${somatotalReal2} Kg`);
             } else {
                 graphlBarra(
                 ctx2,
@@ -201,8 +217,12 @@ setInterval( () => {
                 somaQuantidadeTeoricaArray2,
                 somaQuantidadeRealArray2
               );
-              drawRing(canvas3, "#e6626f", `${somatotalTeorica2} Kg`);
-              drawRing(canvas4, "#e6626f", `${somatotalReal2} Kg`);
+
+              $(canvas3).css('border-color', '#e6626f').text(`${somatotalTeorica2} Kg`);
+              $(canvas4).css('border-color', '#e6626f').text(`${somatotalReal2} Kg`);
+
+              //drawRing(canvas3, "#e6626f", `${somatotalTeorica2} Kg`);
+              //drawRing(canvas4, "#e6626f", `${somatotalReal2} Kg`);
             }
 
             
@@ -253,8 +273,13 @@ setInterval( () => {
                 somaQuantidadeTeoricaArray3,
                 somaQuantidadeRealArray3
               );
-              drawRing(canvas5, "#66af91", `${somatotalTeorica3} Kg`);
-              drawRing(canvas6, "#66af91", `${somatotalReal3} Kg`);
+
+              $(canvas5).css('border-color', '#66af91').text(`${somatotalTeorica3} Kg`);
+              $(canvas6).css('border-color', '#66af91').text(`${somatotalReal3} Kg`);
+
+
+              //drawRing(canvas5, "#66af91", `${somatotalTeorica3} Kg`);
+              //drawRing(canvas6, "#66af91", `${somatotalReal3} Kg`);
             } else {
                 graphlBarra(
                 ctx3,
@@ -262,8 +287,12 @@ setInterval( () => {
                 somaQuantidadeTeoricaArray3,
                 somaQuantidadeRealArray3
               );
-              drawRing(canvas5, "#e6626f", `${somatotalTeorica3} Kg`);
-              drawRing(canvas6, "#e6626f", `${somatotalReal3} Kg`);
+
+              $(canvas5).css('border-color', '#e6626f').text(`${somatotalTeorica3} Kg`);
+              $(canvas6).css('border-color', '#e6626f').text(`${somatotalReal3} Kg`);
+
+              //drawRing(canvas5, "#e6626f", `${somatotalTeorica3} Kg`);
+              //drawRing(canvas6, "#e6626f", `${somatotalReal3} Kg`);
             }
             
             /*#################################### LINHA 4 #################################*/
@@ -314,8 +343,12 @@ setInterval( () => {
                 somaQuantidadeTeoricaArray4,
                 somaQuantidadeRealArray4
               );
-              drawRing(canvas7, "#66af91", `${somatotalTeorica4} Kg`);
-              drawRing(canvas8, "#66af91", `${somatotalReal4} Kg`);
+
+              $(canvas7).css('border-color', '#66af91').text(`${somatotalTeorica4} Kg`);
+              $(canvas8).css('border-color', '#66af91').text(`${somatotalReal4} Kg`);
+
+              //drawRing(canvas7, "#66af91", `${somatotalTeorica4} Kg`);
+              //drawRing(canvas8, "#66af91", `${somatotalReal4} Kg`);
             } else {
                 graphlBarra(
                 ctx4,
@@ -323,15 +356,25 @@ setInterval( () => {
                 somaQuantidadeTeoricaArray4,
                 somaQuantidadeRealArray4
               );
-              drawRing(canvas7, "#e6626f", `${somatotalTeorica4} Kg`);
-              drawRing(canvas8, "#e6626f", `${somatotalReal4} Kg`);
+
+              $(canvas7).css('border-color', '#e6626f').text(`${somatotalTeorica4} Kg`);
+              $(canvas8).css('border-color', '#e6626f').text(`${somatotalReal4} Kg`);
+
+              //drawRing(canvas7, "#e6626f", `${somatotalTeorica4} Kg`);
+              //drawRing(canvas8, "#e6626f", `${somatotalReal4} Kg`);
             }
     })
+}
 
-}, 10000)
+
+setInterval( () => {
+  getDadoGraph();
+}, 300000)
 
 
 setInterval(() => {
     clockElement.textContent = `DATA: ${updateClock()}`;
 }, 1000);
 
+// CHAMA O PRIMEIRO GET PARA ALIMENTAR OS GRAFICOS
+getDadoGraph();

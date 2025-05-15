@@ -27,14 +27,14 @@ function graphLine(ctx, labels, data1, data2) {
             labels: [0,...labels],
             datasets: [
                 {
-                  label: 'Quantidade Teórica',
+                  label: 'Quantidade Programada',
                   data: [0,...data1], // primeiros valores
                   fill: false,
                   borderColor: 'rgb(39, 61, 61)',
                   tension: 0.1
                 },
                 {
-                  label: 'Quantidade Real',
+                  label: 'Quantidade Produzida',
                   data: [0,...data2], // segundos valores
                   fill: false,
                   borderColor: 'rgb(72, 199, 199)',
@@ -76,7 +76,7 @@ function graphlBarra(ctx, labels, data1, data2) {
             labels: [...labels],
             datasets: [
                 {
-                    label: 'Quantidade Teórica',
+                    label: 'Quantidade Programada',
                     data: [...data1],
                     backgroundColor: [
                       'rgba(109, 139, 137, 0.5)',
@@ -89,7 +89,7 @@ function graphlBarra(ctx, labels, data1, data2) {
                     borderWidth: 1
                 },
                 {
-                    label: 'Quantidade Real',
+                    label: 'Quantidade Produzida',
                     data: [...data2],
                     backgroundColor: [
                       'rgba(71, 102, 123, 0.5)',

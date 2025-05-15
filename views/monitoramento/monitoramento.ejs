@@ -1,13 +1,13 @@
 <%- include ('../partials/header.ejs'); -%>
 <%- include ('../partials/navbar.ejs'); -%>
 
-<main class="main_principal">
+<main class="main_principal container-fluid h-100">
 
     <div class="time_principal">
         <p id="time"></p>
     </div>
     
-    <div class="container_monitoramento grid gird-flow-col grid-cols-2">
+    <div class="container_monitoramento">
 
         <div class="container_dash">
             <div class="graphCanvas">
@@ -17,13 +17,13 @@
 
                     <div class="canvas1">
                         <div class="canvas1_1">
-                            <span >Quantidade Teórica</span>
-                            <canvas class="canvas_ring" id="value-1"></canvas>
+                            <span >Quantidade Programada</span>
+                            <p class="value_geral" id="value-1"></p>
                         </div>
 
                         <div class="canvas1_1">
-                            <span >Quantidade Real</span>
-                            <canvas class="canvas_ring" id="value-1a"></canvas>
+                            <span >Quantidade Produzida</span>
+                            <p class="value_geral" id="value-1a"></p>
                         </div>
                     </div>
 
@@ -32,6 +32,7 @@
                     </div>     
             </div>
         </div>
+
         <div class="container_dash">
             <div class="graphCanvas">
                     <div class="canvas0">
@@ -40,13 +41,13 @@
 
                     <div class="canvas1">
                         <div class="canvas1_1">
-                            <span >Quantidade Teórica</span>
-                            <canvas class="canvas_ring" id="value-2"></canvas>
+                            <span >Quantidade Programada</span>
+                            <p class="value_geral" id="value-2"></p>
                         </div>
 
                         <div class="canvas1_1">
-                            <span >QuantidadeReal</span>
-                            <canvas class="canvas_ring" id="value-2a"></canvas>
+                            <span >Quantidade Produzida</span>
+                            <p class="value_geral" id="value-2a"></p>
                         </div>
                     </div>
 
@@ -55,6 +56,7 @@
                     </div>     
             </div>
         </div>
+
         <div class="container_dash">
             <div class="graphCanvas">
                     <div class="canvas0">
@@ -63,13 +65,13 @@
 
                     <div class="canvas1">
                         <div class="canvas1_1">
-                            <span >Quantidade Teórica</span>
-                            <canvas class="canvas_ring" id="value-3"></canvas>
+                            <span >Quantidade Programada</span>
+                            <p class="value_geral" id="value-3"></p>
                         </div>
 
                         <div class="canvas1_1">
-                            <span >Quantidade Real</span>
-                            <canvas class="canvas_ring" id="value-3a"></canvas>
+                            <span >Quantidade Produzida</span>
+                            <p class="value_geral" id="value-3a"></p>
                         </div>
                     </div>
 
@@ -78,21 +80,23 @@
                     </div>     
             </div>
         </div>
+
         <div class="container_dash">
             <div class="graphCanvas">
+
                     <div class="canvas0">
                         <p id="linha4Operation">MISTURADOR 01 E 02</p>                   
                     </div>
 
                     <div class="canvas1">
                         <div class="canvas1_1">
-                            <span >Quantidade Teórica</span>
-                            <canvas class="canvas_ring" id="value-4"></canvas>
+                            <span >uantidade Programada</span>
+                            <p class="value_geral" id="value-4"></p>
                         </div>
 
                         <div class="canvas1_1">
-                            <span >Quantidade Real</span>
-                            <canvas class="canvas_ring" id="value-4a"></canvas>
+                            <span >Quantidade Produzida</span>
+                            <p class="canvas_ring" id="value-4a"></p>
                         </div>
                     </div>
 
@@ -101,6 +105,7 @@
                     </div>     
             </div>
         </div>
+
    </div>
 
 </main>

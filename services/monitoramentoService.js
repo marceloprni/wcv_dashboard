@@ -18,7 +18,7 @@ async function monitoramento() {
                 CAST(SUM(opc.QuantidadeReal) AS DECIMAL(18,2)) AS Soma_QuantidadeReal
                 FROM OrdemProducaoConsumos opc
                 JOIN OrdemProducaos ia ON opc.OrdemProducao = ia.ID 
-                WHERE ia.DataCriacao >= '2025-05-05 06:00:00' AND ia.DataCriacao <= '2025-05-05 23:59:59'
+                WHERE ia.DataCriacao >= '2025-05-05 00:00:01' AND ia.DataCriacao <= '2025-05-05 23:59:59'
                 GROUP BY opc.OrdemProducao, ia.Linha, opc.Batch
                 ORDER BY opc.OrdemProducao, opc.Batch;
             `,
