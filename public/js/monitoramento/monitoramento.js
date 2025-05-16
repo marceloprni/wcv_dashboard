@@ -1,5 +1,7 @@
 
-import { graphlBarra, drawRing, graphLine } from "./graphInformation.js";
+import { 
+    graphlBarra
+} from "./graphInformation.js";
 import { updateClock } from '../timeTratado/timer.js'
 
 
@@ -14,10 +16,10 @@ var canvas6 = document.getElementById("value-3a");
 var canvas7 = document.getElementById("value-4");
 var canvas8 = document.getElementById("value-4a");
 
-var ctx1 = document.getElementById("grafico-1");
-var ctx2 = document.getElementById("grafico-2");
-var ctx3 = document.getElementById("grafico-3");
-var ctx4 = document.getElementById("grafico-4");
+var ctx1 = document.getElementById("grafico-1").getContext('2d');
+var ctx2 = document.getElementById("grafico-2").getContext('2d');
+var ctx3 = document.getElementById("grafico-3").getContext('2d');
+var ctx4 = document.getElementById("grafico-4").getContext('2d');
 
 const maquinas = [
   { linha: 1 },
@@ -25,18 +27,34 @@ const maquinas = [
   { linha: 3 },
   { linha: 4 }
 ];
+
 var letDescricaoReceita1 = [];
 var somaQuantidadeTeoricaArray1 = [];
 var somaQuantidadeRealArray1 = [];
+var somaQuantidadeTeoricaArray1a = [];
+var somaQuantidadeRealArray1a = [];
+var valueMax1;
+
 var letDescricaoReceita2 = [];
 var somaQuantidadeTeoricaArray2 = [];
 var somaQuantidadeRealArray2= [];
+var somaQuantidadeTeoricaArray2a = [];
+var somaQuantidadeRealArray2a= [];
+var valueMax2;
+
 var letDescricaoReceita3 = [];
 var somaQuantidadeTeoricaArray3 = [];
 var somaQuantidadeRealArray3 = [];
+var somaQuantidadeTeoricaArray3a = [];
+var somaQuantidadeRealArray3a = [];
+var valueMax3;
+
 var letDescricaoReceita4 = [];
 var somaQuantidadeTeoricaArray4 = [];
 var somaQuantidadeRealArray4 = [];
+var somaQuantidadeTeoricaArray4a = [];
+var somaQuantidadeRealArray4a = [];
+var valueMax4;
 
 //graphLine(ctx1)
 //graphLine(ctx2)
@@ -49,21 +67,33 @@ function getDadoGraph() {
             letDescricaoReceita1 = [];
             somaQuantidadeTeoricaArray1 = [];
             somaQuantidadeRealArray1 = [];
+            somaQuantidadeTeoricaArray1a = [];
+            somaQuantidadeRealArray1a = [];
+            valueMax1 = 0;
 
             // ARRAY PARA GRAFICOS 2
             letDescricaoReceita2 = [];
             somaQuantidadeTeoricaArray2 = [];
             somaQuantidadeRealArray2 = [];
+            somaQuantidadeTeoricaArray2a = [];
+            somaQuantidadeRealArray2a= [];
+            valueMax2 = 0;
 
             // ARRAY PARA GRAFICOS 3
             letDescricaoReceita3 = [];
             somaQuantidadeTeoricaArray3 = [];
             somaQuantidadeRealArray3 = [];
+            somaQuantidadeTeoricaArray3a = [];
+            somaQuantidadeRealArray3a = [];
+            valueMax3 = 0;
             
             // ARRAY PARA GRAFICOS 4
             letDescricaoReceita4 = [];
             somaQuantidadeTeoricaArray4 = [];
             somaQuantidadeRealArray4 = [];
+            somaQuantidadeTeoricaArray3a = [];
+            somaQuantidadeRealArray3a = [];
+            valueMax3 = 0;
         
             console.log(dados)
 
@@ -84,8 +114,8 @@ function getDadoGraph() {
                     console.log(maquinaOperando);
                     if (maquinaOperando) {
                         $(`#linha${maquinaOperando.linha}Operation`).css('background-color', '#66af91');
-                         $(document.getElementById(`value-${maquinaOperando.linha}`)).css('border-color', '#66af91').text('');
-                         $(document.getElementById(`value-${maquinaOperando.linha}a`)).css('border-color', '#66af91').text('');
+                        $(document.getElementById(`value-${maquinaOperando.linha}`)).css('border-color', '#66af91').text('');
+                        $(document.getElementById(`value-${maquinaOperando.linha}a`)).css('border-color', '#66af91').text('');
                         //drawRing(document.getElementById(`value-${maquinaOperando.linha}`), '#66af91', '');
                         //drawRing(document.getElementById(`value-${maquinaOperando.linha}a`), '#66af91','');
                     } 
@@ -107,19 +137,21 @@ function getDadoGraph() {
             }, {});
 
             for (const key in agrupadoPorProducao1) {
-                  const grupo = agrupadoPorProducao1[key];
+                  const grupo1 = agrupadoPorProducao1[key];
 
                   // Soma de Soma_QuantidadeTeorica
-                  const somaTeorica = grupo.reduce(
+                  const somaTeorica1 = grupo1.reduce(
                     (acc, item) => acc + item.Soma_QuantidadeTeorica,
                     0
                   );
                   // Soma de Soma_QuantidadeReal
-                  const somaReal = grupo.reduce((acc, item) => acc + item.Soma_QuantidadeReal, 0);
+                  const somaReal1 = grupo1.reduce((acc, item) => acc + item.Soma_QuantidadeReal, 0);
 
                   // Adiciona aos arrays
-                  somaQuantidadeTeoricaArray1.push(somaTeorica.toFixed(1));
-                  somaQuantidadeRealArray1.push(somaReal.toFixed(1));
+                  somaQuantidadeTeoricaArray1.push(Number(somaTeorica1.toFixed(1)));
+                  somaQuantidadeRealArray1.push(Number(somaReal1.toFixed(1)));
+                  somaQuantidadeTeoricaArray1a.push(Number(somaTeorica1.toFixed(0)))
+                  somaQuantidadeRealArray1a.push(Number(somaReal1.toFixed(0)));
             }
 
 
@@ -128,18 +160,27 @@ function getDadoGraph() {
                         letDescricaoReceita1.push(value.Descricao);
                     }
             }
-
+            
+            console.log(letDescricaoReceita1)
             const somatotalTeorica1 = somaQuantidadeTeoricaArray1.reduce((acc, val) => acc + parseFloat(val), 0);
             const somatotalReal1 = somaQuantidadeRealArray1.reduce((acc, val) => acc + parseFloat(val), 0);
             
             const dadosoperation1 =dados.operationOn.find(item => item.Linha === 1);
+            valueMax1 = Math.max(...[...somaQuantidadeTeoricaArray1a, ...somaQuantidadeRealArray1a])
+
+            console.log(valueMax1)
+            console.log(somaQuantidadeTeoricaArray1a)
+            console.log(somaQuantidadeRealArray1a)
 
             if (linha1.length > 0 && dadosoperation1) {
               graphlBarra(
                 ctx1,
                 letDescricaoReceita1,
-                somaQuantidadeTeoricaArray1,
-                somaQuantidadeRealArray1
+                somaQuantidadeTeoricaArray1a,
+                somaQuantidadeRealArray1a,
+                valueMax1,
+                'grafico1' 
+
               );
 
               $(canvas1).css('border-color', '#66af91').text(`${somatotalTeorica1.toFixed(1)} Kg`);
@@ -151,8 +192,10 @@ function getDadoGraph() {
                 graphlBarra(
                 ctx1,
                 letDescricaoReceita1,
-                somaQuantidadeTeoricaArray1,
-                somaQuantidadeRealArray1
+                somaQuantidadeTeoricaArray1a,
+                somaQuantidadeRealArray1a,
+                valueMax1,
+                'grafico1' 
               );
 
               $(canvas1).css('border-color', '#e6626f').text(`${somatotalTeorica1.toFixed(1)} Kg`);
@@ -176,19 +219,21 @@ function getDadoGraph() {
             }, {});
 
             for (const key in agrupadoPorProducao2) {
-                  const grupo = agrupadoPorProducao2[key];
+                  const grupo2 = agrupadoPorProducao2[key];
 
                   // Soma de Soma_QuantidadeTeorica
-                  const somaTeorica = grupo.reduce(
+                  const somaTeorica2 = grupo2.reduce(
                     (acc, item) => acc + item.Soma_QuantidadeTeorica,
                     0
                   );
                   // Soma de Soma_QuantidadeReal
-                  const somaReal = grupo.reduce((acc, item) => acc + item.Soma_QuantidadeReal, 0);
+                  const somaReal2 = grupo2.reduce((acc, item) => acc + item.Soma_QuantidadeReal, 0);
 
                   // Adiciona aos arrays
-                  somaQuantidadeTeoricaArray2.push(somaTeorica.toFixed(1));
-                  somaQuantidadeRealArray2.push(somaReal.toFixed(1));
+                  somaQuantidadeTeoricaArray2.push(somaTeorica2.toFixed(1));
+                  somaQuantidadeRealArray2.push(somaReal2.toFixed(1));
+                  somaQuantidadeTeoricaArray2a.push(Number(somaTeorica2.toFixed(0)))
+                  somaQuantidadeRealArray2a.push(Number(somaReal2.toFixed(0)));
             }
 
 
@@ -203,12 +248,16 @@ function getDadoGraph() {
             
             const dadosoperation2 =dados.operationOn.find(item => item.Linha === 2);
 
+            valueMax2 = Math.max(...[...somaQuantidadeTeoricaArray2a, ...somaQuantidadeRealArray2a])
+
             if (linha2.length > 0 && dadosoperation2) {
               graphlBarra(
                 ctx2,
                 letDescricaoReceita2,
-                somaQuantidadeTeoricaArray2,
-                somaQuantidadeRealArray2
+                somaQuantidadeTeoricaArray2a,
+                somaQuantidadeRealArray2a,
+                valueMax2,
+                'grafico2' 
               );
 
               $(canvas3).css('border-color', '#66af91').text(`${somatotalTeorica2.toFixed(1)} Kg`);
@@ -220,8 +269,10 @@ function getDadoGraph() {
                 graphlBarra(
                 ctx2,
                 letDescricaoReceita2,
-                somaQuantidadeTeoricaArray2,
-                somaQuantidadeRealArray2
+                somaQuantidadeTeoricaArray2a,
+                somaQuantidadeRealArray2a,
+                valueMax2,
+                'grafico2' 
               );
 
               $(canvas3).css('border-color', '#e6626f').text(`${somatotalTeorica2.toFixed(1)} Kg`);
@@ -246,19 +297,21 @@ function getDadoGraph() {
             console.log(agrupadoPorProducao3);
 
             for (const key in agrupadoPorProducao3) {
-                  const grupo = agrupadoPorProducao3[key];
+                  const grupo3 = agrupadoPorProducao3[key];
 
                   // Soma de Soma_QuantidadeTeorica
-                  const somaTeorica = grupo.reduce(
+                  const somaTeorica3 = grupo3.reduce(
                     (acc, item) => acc + item.Soma_QuantidadeTeorica,
                     0
                   );
                   // Soma de Soma_QuantidadeReal
-                  const somaReal = grupo.reduce((acc, item) => acc + item.Soma_QuantidadeReal, 0);
+                  const somaReal3 = grupo3.reduce((acc, item) => acc + item.Soma_QuantidadeReal, 0);
 
                   // Adiciona aos arrays
-                  somaQuantidadeTeoricaArray3.push(somaTeorica.toFixed(1));
-                  somaQuantidadeRealArray3.push(somaReal.toFixed(1));
+                  somaQuantidadeTeoricaArray3.push(somaTeorica3.toFixed(1));
+                  somaQuantidadeRealArray3.push(somaReal3.toFixed(1));
+                  somaQuantidadeTeoricaArray3a.push(Number(somaTeorica3.toFixed(0)))
+                  somaQuantidadeRealArray3a.push(Number(somaReal3.toFixed(0)));
             }
 
             for (let value of dados.receitaOn) {
@@ -272,6 +325,8 @@ function getDadoGraph() {
             
             const dadosoperation3 = dados.operationOn.find(item => item.Linha === 3);
 
+            valueMax3 = Math.max(...[...somaQuantidadeTeoricaArray3a, ...somaQuantidadeRealArray3a])
+
             console.log(letDescricaoReceita3);
             console.log(somaQuantidadeTeoricaArray3);
             console.log(somaQuantidadeRealArray3);
@@ -280,8 +335,10 @@ function getDadoGraph() {
               graphlBarra(
                 ctx3,
                 letDescricaoReceita3,
-                somaQuantidadeTeoricaArray3,
-                somaQuantidadeRealArray3
+                somaQuantidadeTeoricaArray3a,
+                somaQuantidadeRealArray3a,
+                valueMax3,
+                'grafico3' 
               );
 
               $(canvas5).css('border-color', '#66af91').text(`${somatotalTeorica3.toFixed(1)} Kg`);
@@ -294,8 +351,10 @@ function getDadoGraph() {
                 graphlBarra(
                 ctx3,
                 letDescricaoReceita3,
-                somaQuantidadeTeoricaArray3,
-                somaQuantidadeRealArray3
+                somaQuantidadeTeoricaArray3a,
+                somaQuantidadeRealArray3a,
+                valueMax3,
+                'grafico3' 
               );
 
               $(canvas5).css('border-color', '#e6626f').text(`${somatotalTeorica3.toFixed(1)} Kg`);
@@ -319,19 +378,21 @@ function getDadoGraph() {
             console.log(agrupadoPorProducao4);  
 
             for (const key in agrupadoPorProducao4) {
-                  const grupo = agrupadoPorProducao4[key];
+                  const grupo4 = agrupadoPorProducao4[key];
 
                   // Soma de Soma_QuantidadeTeorica
-                  const somaTeorica = grupo.reduce(
+                  const somaTeorica4 = grupo4.reduce(
                     (acc, item) => acc + item.Soma_QuantidadeTeorica,
                     0
                   );
                   // Soma de Soma_QuantidadeReal
-                  const somaReal = grupo.reduce((acc, item) => acc + item.Soma_QuantidadeReal, 0);
+                  const somaReal4 = grupo4.reduce((acc, item) => acc + item.Soma_QuantidadeReal, 0);
 
                   // Adiciona aos arrays
-                  somaQuantidadeTeoricaArray4.push(somaTeorica.toFixed(1));
-                  somaQuantidadeRealArray4.push(somaReal.toFixed(1));
+                  somaQuantidadeTeoricaArray4.push(somaTeorica4.toFixed(1));
+                  somaQuantidadeRealArray4.push(somaReal4.toFixed(1));
+                  somaQuantidadeTeoricaArray4a.push(Number(somaTeorica4.toFixed(0)))
+                  somaQuantidadeRealArray4a.push(Number(somaReal4.toFixed(0)));
             }
 
 
@@ -346,12 +407,17 @@ function getDadoGraph() {
             
             const dadosoperation4 =dados.operationOn.find(item => item.Linha === 4);
 
+            valueMax4 = Math.max(...[...somaQuantidadeTeoricaArray4a, ...somaQuantidadeRealArray4a])
+
             if (linha4.length > 0 && dadosoperation4) {
               graphlBarra(
                 ctx4,
                 letDescricaoReceita4,
-                somaQuantidadeTeoricaArray4,
-                somaQuantidadeRealArray4
+                somaQuantidadeTeoricaArray4a,
+                somaQuantidadeRealArray4a,
+                valueMax4,
+                'grafico4' 
+
               );
 
               $(canvas7).css('border-color', '#66af91').text(`${somatotalTeorica4.toFixed(1)} Kg`);
@@ -363,8 +429,10 @@ function getDadoGraph() {
                 graphlBarra(
                 ctx4,
                 letDescricaoReceita4,
-                somaQuantidadeTeoricaArray4,
-                somaQuantidadeRealArray4
+                somaQuantidadeTeoricaArray4a,
+                somaQuantidadeRealArray4a,
+                valueMax4,
+                'grafico4' 
               );
 
               $(canvas7).css('border-color', '#e6626f').text(`${somatotalTeorica4.toFixed(1)} Kg`);

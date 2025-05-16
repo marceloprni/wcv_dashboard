@@ -19,7 +19,7 @@ async function monitoramento() {
                 CAST(SUM(opc.QuantidadeReal) AS DECIMAL(18,2)) AS Soma_QuantidadeReal
                 FROM OrdemProducaoConsumos opc
                 JOIN OrdemProducaos ia ON opc.OrdemProducao = ia.ID 
-                WHERE opc.DataCriacao >= '2025-05-15 00:00:01' AND opc.DataCriacao <= '2025-05-15 23:59:59'
+                WHERE opc.DataCriacao >= '2025-05-09 00:00:01' AND opc.DataCriacao <= '2025-05-09 23:59:59'
                 GROUP BY opc.OrdemProducao, ia.Linha, opc.Batch
                 ORDER BY opc.OrdemProducao, opc.Batch;
             `,
@@ -30,31 +30,25 @@ async function monitoramento() {
         let dadosOperacaoOn = await connection.query(`
                 SELECT  Linha
                 from OrdemProducaos
-                where Status = 'A' and DataCriacao >= '2025-05-15 00:00:01' AND DataCriacao <= '2025-05-15 23:59:59';
+                where Status = 'A' and DataCriacao >= '2025-05-09 00:00:01' AND DataCriacao <= '2025-05-09 23:59:59';
             `,
             {
                 type: QueryTypes.SELECT,
             })
         
         let dadosReceitaOn =  await connection.query(`
-                SELECT
-                MAX(ia.id) AS id,           
-                MAX(ia.Linha) AS Linha,     
-                ia.Descricao
+                SELECT	
+	        	opc.OrdemProducao as id ,
+				ia.Linha as Linha,
+                ia.Descricao as Descricao
                 FROM OrdemProducaoConsumos opc
                 JOIN OrdemProducaos ia ON opc.OrdemProducao = ia.ID
-                WHERE opc.DataCriacao >= '2025-05-15 00:00:01' AND opc.DataCriacao <= '2025-05-15 23:59:59'
-                GROUP BY ia.Descricao
-                ORDER BY MAX(ia.id);
+                WHERE opc.DataCriacao >= '2025-05-09 00:00:01' AND opc.DataCriacao <= '2025-05-09 23:59:59'
+                Group by opc.OrdemProducao, ia.Linha , ia.Descricao;
             `,
             {
                 type: QueryTypes.SELECT,
             })
-
-
-            console.log(dadosGeraisProducao);
-        console.log(dadosOperacaoOn);
-        console.log(dadosReceitaOn);
     
         return {
             dados: dadosGeraisProducao,

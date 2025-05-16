@@ -47,8 +47,10 @@ docker build -t aptivdashboard/node1:latest .
 docker run -d --restart unless-stopped -p 3500:3500 --name aptivdashboard aptivdashboard/node1
 
 
-
-
+var a = [1, 2, 3,5]
+var b = [13, 22, 31, 44, 56]
+var c = [...a, ...b]
+console.log(c)
 
 
 
