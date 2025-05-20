@@ -95,7 +95,6 @@ function getDadoGraph() {
             somaQuantidadeRealArray3a = [];
             valueMax3 = 0;
         
-            console.log(dados)
 
             /*#################################### SETA AS MAQUINAS ON #################################*/
 
@@ -111,7 +110,7 @@ function getDadoGraph() {
             
             dados.operationOn.forEach(item => {
                 const maquinaOperando = maquinas.find(m => m.linha === item.Linha);
-                    console.log(maquinaOperando);
+                    
                     if (maquinaOperando) {
                         $(`#linha${maquinaOperando.linha}Operation`).css('background-color', '#66af91');
                         $(document.getElementById(`value-${maquinaOperando.linha}`)).css('border-color', '#66af91').text('');
@@ -125,8 +124,6 @@ function getDadoGraph() {
              /*#################################### LINHA 1 #################################*/
             const linha1 = dados.dados.filter(item => item.Linha === 1);
 
-            console.log('linha 1')
-            console.log(linha1)
             // Agrupa os itens por OrdemProducao
             const agrupadoPorProducao1 = linha1.reduce((acc, item) => {
                     if (!acc[item.OrdemProducao]) {
@@ -161,16 +158,12 @@ function getDadoGraph() {
                     }
             }
             
-            console.log(letDescricaoReceita1)
+      
             const somatotalTeorica1 = somaQuantidadeTeoricaArray1.reduce((acc, val) => acc + parseFloat(val), 0);
             const somatotalReal1 = somaQuantidadeRealArray1.reduce((acc, val) => acc + parseFloat(val), 0);
             
             const dadosoperation1 =dados.operationOn.find(item => item.Linha === 1);
             valueMax1 = Math.max(...[...somaQuantidadeTeoricaArray1a, ...somaQuantidadeRealArray1a])
-
-            console.log(valueMax1)
-            console.log(somaQuantidadeTeoricaArray1a)
-            console.log(somaQuantidadeRealArray1a)
 
             if (linha1.length > 0 && dadosoperation1) {
               graphlBarra(
@@ -208,8 +201,6 @@ function getDadoGraph() {
             /*#################################### LINHA 2 #################################*/
             const linha2 = dados.dados.filter(item => item.Linha === 2);
 
-            console.log('linha 2')
-            console.log(linha2)
             const agrupadoPorProducao2 = linha2.reduce((acc, item) => {
                     if (!acc[item.OrdemProducao]) {
                             acc[item.OrdemProducao] = [];
@@ -294,8 +285,6 @@ function getDadoGraph() {
                             return acc;
                 }, {});
 
-            console.log(agrupadoPorProducao3);
-
             for (const key in agrupadoPorProducao3) {
                   const grupo3 = agrupadoPorProducao3[key];
 
@@ -327,9 +316,7 @@ function getDadoGraph() {
 
             valueMax3 = Math.max(...[...somaQuantidadeTeoricaArray3a, ...somaQuantidadeRealArray3a])
 
-            console.log(letDescricaoReceita3);
-            console.log(somaQuantidadeTeoricaArray3);
-            console.log(somaQuantidadeRealArray3);
+  
 
             if (linha3.length > 0 && dadosoperation3) {
               graphlBarra(
@@ -374,8 +361,6 @@ function getDadoGraph() {
                             acc[item.OrdemProducao].push(item);
                             return acc;
             }, {});
-
-            console.log(agrupadoPorProducao4);  
 
             for (const key in agrupadoPorProducao4) {
                   const grupo4 = agrupadoPorProducao4[key];
